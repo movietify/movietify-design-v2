@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Anasayfa
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <div class="movie" *ngFor="let movie of movies | async">
+    <div ng-app="" ng-init="movie">
+
+         <div class="movie-group" >
+
+          <img class="moviePhoto" (click)="goDetail(movie._id)" [attr.src]="movie.cover" width="150px" height="215px"/>
+
+          <div class="movie-info">
+            <div class="movie-info-header">
+              <div class="title-group">
+               <b> {{ movie.title }} </b>
+                <span class="imdb">
+                  <img src="/assets/imgs/star.png" height="24" width="24" style="margin-top: 7px;">
+                  <p class="white"> {{ movie.imdb }} </p>
+                </span>
+              </div>
+              <div class="bookmark">
+                <img src="/assets/imgs/yellow-plus.png" (click)="addlist()">
+              </div>
+            </div>
+            
+            <div class="movie-info-content">
+              <span class="other">
+                <p> {{movie.minute}} | {{movie.year}} | {{movie.genre}}</p>
+              </span>
+              <p>{{ movie.summary.substring(0,250) }}...</p>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+  
+</ion-content>

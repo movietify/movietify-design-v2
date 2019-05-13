@@ -1,0 +1,39 @@
+<ion-content id="page5">
+  <div  style="background:url(assets/imgs/bg.png) no-repeat center;background-size:cover; height: 100%">
+    <div class="spacer" style="height:100px;" id="login-spacer1"></div>
+    <form id="signup-form5">
+      <div id="signup-container3">
+        <img src="assets/imgs/logo.png" style="display:block;width:30%;height:auto;margin-left:auto;margin-right:auto;" />
+        <div id="signup-markdown10" style="text-align:center;" class="show-list-numbers-and-dots">
+          <span style="color:#FFFFFF;font-size:20px;">
+            Movietify
+          </span>
+        </div>
+      </div>
+      <div class="spacer" style="height:40px;" id="login-spacer1"></div>
+      <ion-list id="signup-list12" style="background-color: transparent">
+        <ion-item id="signup-input4">
+          <ion-input type="text" [(ngModel)]="registerModel.username" [ngModelOptions]="{standalone: true}" placeholder="Kullanıcı Adı" style="background-color: none"></ion-input>
+        </ion-item>
+        <ion-item id="signup-input5">
+          <ion-input type="email" [(ngModel)]="registerModel.email" [ngModelOptions]="{standalone: true}" placeholder="Email" style="background-color: none"></ion-input>
+        </ion-item>
+        <ion-item id="signup-input6">
+          <ion-input type="password" [(ngModel)]="registerModel.password" [ngModelOptions]="{standalone: true}" placeholder="Şifre" style="background-color: none"></ion-input>
+        </ion-item>
+      </ion-list>
+      <button id="signup-button3" style="border-radius: 50px 50px 50px 50px;width: 95%;height: 45px;background-color: #fe3232;margin: 20px auto;color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: large;" (click)="createUser(registerModel.username, registerModel.email, registerModel.password)">
+        Kayıt Ol
+      </button>
+    </form>
+    <button id="signup-button4" style="background: none;color: white;display: flex;flex-direction: column;align-items: center;justify-content: center;width: 100%;margin-top: 100px;
+    font-size: larger;" (click)="goToLogin()">
+      Hesabınız var mı? Giriş Yapın
+    </button>
+  </div>
+</ion-content>

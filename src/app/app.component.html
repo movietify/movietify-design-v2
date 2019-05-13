@@ -1,0 +1,27 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu>
+      <ion-header>
+        <ion-toolbar color="danger">
+          <ion-title>Movietify</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+          <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;padding: 30px 0 50px 0;">
+            <img src="/assets/imgs/ahmedo.jpg" style="border-radius: 50%;border: 3px solid gray;" height="150" width="150">
+          </div>
+          <ion-list>
+            <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+              <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+                <ion-label>
+                  {{p.title}}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+          <p style="font-size:11px;display: flex;flex-direction: column;justify-content: center;align-items: center;position: absolute;bottom: 20px;width: 100%;">© Created By QWERTY</p>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

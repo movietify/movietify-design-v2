@@ -1,0 +1,67 @@
+.movie{
+	height: 100%;
+  color: #d6d6d6;
+  background-color: #202020;
+  overflow-y: scroll;
+}
+
+.movie-group {
+	height: 230px;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.movie-info {
+	height: 215px;
+	width: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.movie-info-content {
+	height: 150px;
+	width: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.movie-info-content p { 
+  text-align: justify;
+  margin-top: 0px;
+}
+
+.movie-info-header {
+	height: 50px;
+	width: 250px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.title-group {
+	height: 50px;
+	width: 250px;
+}
+
+.title-group p {
+	font-weight: bold;
+}
+
+.imdb {
+	height: 25px;
+	width: 150px;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.imdb p {
+	margin-left: 5px; 
+}
+
+.bookmark {
+	height: 50px;
+	width: 50px;
+}

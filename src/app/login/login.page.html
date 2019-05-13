@@ -1,0 +1,37 @@
+<ion-content id="page4">
+  <div style="background:url('/assets/imgs/bg.png') no-repeat center;background-size:cover;height: 100%; margin: 0;">
+    <div class="spacer" style="height:100px;" id="login-spacer1"></div>
+    <div id="login-container1">
+      <img src="assets/imgs/logo.png" style="display:block;width:30%;height:auto;margin-left:auto;margin-right:auto;" />
+      <div id="login-markdown1" style="text-align:center;" class="show-list-numbers-and-dots">
+        <span style="color:#FFFFFF;font-size:20px;">
+          Movietify
+        </span>
+      </div>
+    </div>
+    <div class="spacer" style="height:40px;" id="login-spacer1"></div>
+    <form id="login-form1">
+      <ion-list id="login-list2" style="background-color: transparent">
+        <ion-item id="login-input1">
+          <ion-input type="text" [(ngModel)]="loginModel.username" [ngModelOptions]="{standalone: true}" placeholder="Kullanıcı Adı" style="background-color: none"></ion-input>
+        </ion-item>
+        <ion-item id="login-input2">
+          <ion-input type="password" [(ngModel)]="loginModel.password" [ngModelOptions]="{standalone: true}" placeholder="Şifre" style="background-color: none"></ion-input>
+        </ion-item>
+      </ion-list>
+      <button id="login-button1" style="border-radius: 50px 50px 50px 50px;width: 95%;height: 45px;background-color: #fe3232;margin: 20px auto;color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: large;" (click)="loginThisUser(loginModel.username, loginModel.password)">
+        Giriş Yap
+      </button>
+      <hr>
+      <button id="login-button2" style="background: none;color: white;display: flex;flex-direction: column;align-items: center;justify-content: center;width: 100%;margin-top: 100px;
+      font-size: larger;" (click)="goToRegister()">
+        Hesabınız yok mu? Kayıt Olun
+      </button>
+    </form>
+  </div>
+</ion-content>

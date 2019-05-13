@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="danger">
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+      </ion-buttons>
+    <ion-title>Film Detay</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="movie" *ngFor="let detail of details | async">
+
+      <div ng-app="" ng-init="detail">
+
+        <div class="movie-group">
+          <img class="moviePhoto" [attr.src]="detail.cover" width="150px" height="215px"/>
+
+          <div class="movie-info">
+            <div class="movie-info-header">
+              <div class="title-group">
+                <span><b> {{ detail.title }} </b></span>
+                <span class="imdb">
+                  <img src="/assets/imgs/star.png" height="24" width="24" style="margin-top: 7px;">
+                  <p class="white"> {{ detail.imdb }} </p>
+                </span>
+              </div>
+              <div class="bookmark">
+                <img src="/assets/imgs/yellow-plus.png">
+              </div>
+            </div>
+            
+            <div class="movie-info-content">
+              <span class="other">
+                 <p> {{ detail.minute }} | {{ detail.year }} | {{ detail.genre }} </p>
+              </span>
+              <p></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary">
+          <h4 class="white">Özet</h4>
+          <span> {{ detail.summary }}
+          </span>
+        </div>
+
+        <div class="trailer">
+          <video height="320" width="100%" controls>
+            <source [attr.src]="detail.video" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      </div>
+</ion-content>

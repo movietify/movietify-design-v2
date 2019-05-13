@@ -1,0 +1,16 @@
+{
+  "name": "Movietify",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "localhost:3000/movie/all"
+    }
+  ]
+
+
+}
