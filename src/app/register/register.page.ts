@@ -45,13 +45,6 @@ export class RegisterPage implements OnInit {
       .subscribe(user => this.users.push(user));
 
       console.log(this.users);
-
-      
-      const animationsOptions = {
-        animation: 'android-transition',
-        duration: 2000,
-        direction: 'next'  
-      }  
       this.navCtrl.navigateForward('home');
     }
     else{      

@@ -3,22 +3,15 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-
-
-
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.page.html',
   styleUrls: ['./movie-detail.page.scss'],
 })
 
-
-
 export class MovieDetailPage implements OnInit {
   
   id:String = "";
-  
-
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 

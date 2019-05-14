@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'secret'
+  })
+};
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +15,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }

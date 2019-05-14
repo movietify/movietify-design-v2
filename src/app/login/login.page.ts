@@ -20,13 +20,17 @@ export class LoginPage implements OnInit {
 
   loginModel:User=new User();
   user=[];
+  message = "";
   userVal:string;
+  results: Observable<any>;
+  data: Observable<any>;
   constructor(public alertCtrl:AlertController,public navCtrl: NavController, public httpClient: HttpClient) {
  
   }
 
-  sendPostRequest(loginModel: User): Observable<any> {    
-    return this.httpClient.post("http://localhost:3000/auth/signin/", loginModel, httpOptions);
+  sendPostRequest(loginModel: User): Observable<any> {
+    this.results = this.httpClient.post("http://localhost:3000/auth/signin/", loginModel, httpOptions);
+    return this.results;
   }
 
 
@@ -40,22 +44,17 @@ export class LoginPage implements OnInit {
 
     console.log(this.loginModel);
     if(this.loginModel.username!='' && this.loginModel.password!=''){
-      
-      this.sendPostRequest(this.loginModel)
-      .subscribe(user => this.user.push(user));
 
-      console.log(this.user['username']);
+      if(this.message != "Auth failed"){
 
-
-
-      const animationsOptions = {
-        animation: 'android-transition',
-        duration: 2000,
-        direction: 'next'
-  
+          this.sendPostRequest(this.loginModel)
+        .subscribe(user => this.user.push(user));
+        
+        this.navCtrl.navigateForward('home');
       }
-  
-      this.navCtrl.navigateForward('home');
+      else{
+        console.log("asdasd");
+      }
 
     }
     else{
