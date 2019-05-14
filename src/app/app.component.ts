@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HttpClient } from '@angular/common/http';
+import { LoginPageModule } from '../app/login/login.module';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +13,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
 
   ROOT_URL="localhost:3000";
-
-  movies: any;
-
-  getMovies() {
-    this.movies = this.http.get(this.ROOT_URL + '/movie/all');
-  }
-
+  userId: any;
 
   public appPages = [
     {
@@ -34,7 +29,7 @@ export class AppComponent {
       url: '/about'
     },
     {
-      title: 'Login',
+      title: 'Çıkış Yap',
       url: '/login'
     }
   ];

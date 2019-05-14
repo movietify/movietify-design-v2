@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,9 +16,16 @@ const httpOptions = {
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  userId = "";
+  constructor(private http: HttpClient, private storage: Storage) { }
+
+  getStorage(){
+    return this.storage.getItem("userId");
+  }
 
   ngOnInit() {
+    this.userId = this.getStorage();
+    console.log(this.userId);
   }
 
 }

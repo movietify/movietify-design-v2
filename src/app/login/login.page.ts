@@ -3,6 +3,7 @@ import { User } from '../entities/user';
 import { AlertController, NavController } from '@ionic/angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { userInfo } from 'os';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,18 +20,15 @@ const httpOptions = {
 export class LoginPage implements OnInit {
 
   loginModel:User=new User();
-  user=[];
-  message = "";
+  user = [];
+  currentUser = [];
   userVal:string;
-  results: Observable<any>;
-  data: Observable<any>;
-  constructor(public alertCtrl:AlertController,public navCtrl: NavController, public httpClient: HttpClient) {
+  constructor(public alertCtrl:AlertController,public navCtrl: NavController, public httpClient: HttpClient, private storage: Storage) {
  
   }
 
   sendPostRequest(loginModel: User): Observable<any> {
-    this.results = this.httpClient.post("http://localhost:3000/auth/signin/", loginModel, httpOptions);
-    return this.results;
+    return this.httpClient.post("http://localhost:3000/auth/signin/", loginModel, httpOptions);
   }
 
 
@@ -43,18 +41,24 @@ export class LoginPage implements OnInit {
     this.loginModel.password=password;
 
     console.log(this.loginModel);
+    
     if(this.loginModel.username!='' && this.loginModel.password!=''){
+      
+      this.sendPostRequest(this.loginModel).subscribe(user => {this.user.push(user), this.currentUser.push(user)});
 
-      if(this.message != "Auth failed"){
+      setTimeout(()=>{    
+        console.log(this.user);
 
-          this.sendPostRequest(this.loginModel)
-        .subscribe(user => this.user.push(user));
-        
-        this.navCtrl.navigateForward('home');
-      }
-      else{
-        console.log("asdasd");
-      }
+        if(this.user[0].message=="Auth successful") {
+          console.log("başarılı");
+          this.user = [];
+          this.saveStorage();
+          this.navCtrl.navigateForward('home');
+        }
+        else{
+        }
+      }, 1000); 
+      
 
     }
     else{
@@ -67,7 +71,13 @@ export class LoginPage implements OnInit {
     this.navCtrl.navigateForward('register');
   }
 
+  saveStorage(){
+    this.storage.clear();
+    this.storage.setItem("userId",this.currentUser[0].userId);
+  }
+
   ngOnInit() {
+    this.currentUser = [];
   }
 
 }
