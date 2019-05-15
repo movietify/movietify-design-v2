@@ -5,10 +5,14 @@ import { listAddMovies } from '../entities/listAddMovies';
 import { Observable } from 'rxjs';
 import { NavParams } from '@ionic/angular';
 
+
+
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Access-Control-Allow-Origin':'*',
-    'Access-Control-Allow-Methods': 'PUT',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+    'Access-Control-Allow-Methods': 'PUT, POST, GET, DELETE, OPTIONS',
     'Content-Type':  'application/json',
     'Authorization': 'secret'
   })
@@ -31,9 +35,10 @@ export class PopoverComponent implements OnInit {
   constructor(private http: HttpClient, private storage: Storage, private navParams: NavParams) {}
 
   ROOT_URL = "http://localhost:3000/profile/list/all/";
+  put_url="http://localhost:3000/movie/list/add/";
 
-  sendPostRequest(listModel: listAddMovies): Observable<any> {    
-    return this.http.put("http://localhost:3000/movie/list/add", JSON.stringify(listModel), httpOptions);
+  sendPostRequest(put_url:string): Observable<any> {    
+    return this.http.put(put_url, httpOptions);
   }
 
   getStorage(){
@@ -58,8 +63,10 @@ export class PopoverComponent implements OnInit {
     console.log(this.listModel.userID);
     console.log(this.listModel.movieName);
     console.log(this.listModel.listID);
+    this.put_url+=this.listModel.userID+"/"+this.listModel.movieName+"/"+this.listModel.listID;
 
-    this.sendPostRequest(this.listModel)
+    
+    this.sendPostRequest(this.put_url)
       .subscribe(user => this.movies.push(user));
 
     console.log(this.movies);

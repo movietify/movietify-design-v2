@@ -36,6 +36,7 @@ export class ListPopoverComponent implements OnInit {
   saveList(listName: string){
     this.ListModel.user_id = this.userId;
     this.ListModel.name = listName;
+    console.log("save butonu basıldı");
 
     if(this.ListModel.user_id != '' && this.ListModel.name != ''){
       this.sendPostRequest(this.ListModel)
