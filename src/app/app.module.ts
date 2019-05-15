@@ -11,20 +11,31 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { PopoverComponent } from './popover/popover.component';
+import { ListPopoverComponent } from './list-popover/list-popover.component';
+import { IonicStorageModule } from '@ionic/storage';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PopoverComponent
+    PopoverComponent,
+    ListPopoverComponent
   ],
   entryComponents: [
-    PopoverComponent
+    PopoverComponent,
+    ListPopoverComponent
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+      driverOrder: ['voluser', 'sqlite', 'websql']
+    }), 
+    IonicStorageModule,
+    FormsModule
   ],
   providers: [
     HttpClientModule,

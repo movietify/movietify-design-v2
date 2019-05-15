@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>
+      Liste Oluştur
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-list>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="ListModel.name" [ngModelOptions]="{standalone: true}" placeholder="Liste Adı Giriniz" style="background-color: none"></ion-input>
+  </ion-item>
+  <ion-item>
+    <button id="login-button1" style="width: 35%;height: 25px;background-color: #fe3232;margin: 20px auto;color: white;" (click)="saveList(ListModel.name)">
+        Kaydet
+      </button>
+  </ion-item>
+</ion-list>

@@ -5,6 +5,7 @@ import { MovieService } from '../services/movie.service';
 import { HttpClient } from '@angular/common/http';
 import { MovieDetailPage } from '../movie-detail/movie-detail.page';
 import { PopoverComponent } from '../popover/popover.component';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-home',
@@ -14,13 +15,17 @@ import { PopoverComponent } from '../popover/popover.component';
 
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private http: HttpClient, public popoverController: PopoverController) {
+  response = [];
+  constructor(public navCtrl: NavController, private http: HttpClient, public popoverController: PopoverController, private storage: Storage) {
  
   }
 
-  async presentPopover(ev: any) {
+  async presentPopover(ev: any, name: string) {
     const popover = await this.popoverController.create({
       component: PopoverComponent,
+      componentProps: {
+        title: name
+      },
       event: ev,
       translucent: true
     });
@@ -34,6 +39,7 @@ export class HomePage {
   public goDetail(id: string){
     this.navCtrl.navigateForward('movie-detail/'+id)
   }
+
 
   ngOnInit() {
     this.movies = this.http.get(this.ROOT_URL);

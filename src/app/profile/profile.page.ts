@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { Storage } from '@ionic/storage';
+import { PopoverController } from '@ionic/angular';
+import { ListPopoverComponent } from '../list-popover/list-popover.component';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,16 +18,49 @@ const httpOptions = {
 })
 export class ProfilePage implements OnInit {
 
-  userId = "";
-  constructor(private http: HttpClient, private storage: Storage) { }
+  _userId: Promise<any>;
+  userId:String = "";
+  userInfo: any;
+  lists: any;
+  constructor(private http: HttpClient, private storage: Storage, public popoverController: PopoverController) { }
+
+  ROOT_URL= "http://localhost:3000/profile/info/";
+  list_Url = "http://localhost:3000/profile/list/all/";
 
   getStorage(){
-    return this.storage.getItem("userId");
+    return this.storage.get("userId");
+  }
+
+  getUserInfo(){
+    this.userInfo = this.http.get(this.ROOT_URL);
+    this.lists = this.http.get(this.list_Url);
+    console.log(this.lists);
+  }
+
+  async listAddPopup(ev: any) {
+    const popover = await this.popoverController.create({
+      component: ListPopoverComponent,
+      event: ev,
+      translucent: true
+    });
+
+    popover.onDidDismiss();
+
+    return await popover.present();
   }
 
   ngOnInit() {
-    this.userId = this.getStorage();
-    console.log(this.userId);
+    this._userId = this.getStorage();
+    this._userId.then((val) => {
+      if(val){
+        this.userId = val;
+        console.log(this.userId);
+        this.ROOT_URL+=this.userId;
+        this.list_Url+=this.userId;
+        this.getUserInfo();
+      }
+    });
+    
   }
 
 }

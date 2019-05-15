@@ -16,57 +16,24 @@
           <span class="white">18</span>
         </div>
         
-        <div class="profile-info">
-          <span><img src="/assets/imgs/ahmedo.jpg" height="100" width="100"></span>
+        <div class="profile-info" *ngFor="let info of userInfo | async">
+          <span><img src="/assets/imgs/avatar.png" height="100" width="100"></span>
   
-          <h3 class="white">Ahmet Durmuş</h3>
-          <p class="country"><i>Konya, Turkiye</i></p>
+          <h3 class="white">{{ info.username }}</h3>
           <hr class="line">
         </div>
   
         <h4 style="margin-left: 10px;">Listelerim</h4>
   
         <div class="lists">
-          <div class="movielist">
-            <p style="margin-left:20px;">Beğendiklerim</p>
+          <div class="movielist" *ngFor="let list of lists | async">
+            <p style="margin-left:20px;margin-top:-3px;">{{ list.name }}</p>
             <div class="list-group">
-              <span>18 adet</span>
               <img src="/assets/imgs/remove-movie.png" height="50" width="50">
             </div>
           </div>
-  
-          <div class="movielist">
-            <p style="margin-left:20px;">Beğendiklerim</p>
-            <div class="list-group">
-              <span>18 adet</span>
-              <img src="/assets/imgs/remove-movie.png" height="50" width="50">
-            </div>
-          </div>
-  
-          <div class="movielist">
-            <p style="margin-left:20px;">Beğendiklerim</p>
-            <div class="list-group">
-              <span>18 adet</span>
-              <img src="/assets/imgs/remove-movie.png" height="50" width="50">
-            </div>
-          </div>
-  
-          <div class="movielist">
-            <p style="margin-left:20px;">Beğendiklerim</p>
-            <div class="list-group">
-              <span>18 adet</span>
-              <img src="/assets/imgs/remove-movie.png" height="50" width="50">
-            </div>
-          </div>
-  
-          <div class="movielist">
-            <p style="margin-left:20px;">Beğendiklerim</p>
-            <div class="list-group">
-              <span>18 adet</span>
-              <img src="/assets/imgs/remove-movie.png" height="50" width="50">
-            </div>
-          </div>
-          <div class="create-list-button" onclick="listAddPopup()">+</div>
-        </div>  
+          <div class="create-list-button" (click)="listAddPopup($event)">+</div>
+        </div>
+          
       </div>
 </ion-content>

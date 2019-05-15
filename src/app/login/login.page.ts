@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../entities/user';
-import { AlertController, NavController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { userInfo } from 'os';
+import { Storage } from '@ionic/storage';
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -23,7 +24,7 @@ export class LoginPage implements OnInit {
   user = [];
   currentUser = [];
   userVal:string;
-  constructor(public alertCtrl:AlertController,public navCtrl: NavController, public httpClient: HttpClient, private storage: Storage) {
+  constructor(public navCtrl: NavController, public httpClient: HttpClient, private storage: Storage) {
  
   }
 
@@ -58,8 +59,6 @@ export class LoginPage implements OnInit {
         else{
         }
       }, 1000); 
-      
-
     }
     else{
       
@@ -72,8 +71,7 @@ export class LoginPage implements OnInit {
   }
 
   saveStorage(){
-    this.storage.clear();
-    this.storage.setItem("userId",this.currentUser[0].userId);
+    this.storage.set("userId",this.currentUser[0].userId);
   }
 
   ngOnInit() {

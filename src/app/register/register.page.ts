@@ -4,7 +4,6 @@ import { NavController } from '@ionic/angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,7 +18,6 @@ const httpOptions = {
   styleUrls: ['./register.page.scss'],
 })
 
-
 export class RegisterPage implements OnInit {
   registerModel:User=new User();
   users=[];
@@ -27,12 +25,9 @@ export class RegisterPage implements OnInit {
  
   }
 
-
   sendPostRequest(registerModel: User): Observable<any> {    
     return this.httpClient.post("http://localhost:3000/auth/signup/", registerModel, httpOptions);
   }
-
-
 
   createUser(username: string, email: string, password: string){  
     this.registerModel.username = username;

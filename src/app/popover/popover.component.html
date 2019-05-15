@@ -8,6 +8,7 @@
 
 <ion-list>
   <ion-item *ngFor="let item of items">
-    {{ item.item }}
+    {{ item.name }}
+    <img src="/assets/imgs/yellow-plus.png" width="50px" height="50px" style="position: absolute;right: 0px;" (click)="addMovie(item._id)">
   </ion-item>
 </ion-list>
