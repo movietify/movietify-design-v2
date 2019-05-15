@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, NavController } from '@ionic/angular';
 import { ListPopoverComponent } from '../list-popover/list-popover.component';
 
 const httpOptions = {
@@ -22,7 +22,7 @@ export class ProfilePage implements OnInit {
   userId:String = "";
   userInfo: any;
   lists: any;
-  constructor(private http: HttpClient, private storage: Storage, public popoverController: PopoverController) { }
+  constructor(private http: HttpClient, private storage: Storage, public popoverController: PopoverController, public navCtrl: NavController) { }
 
   ROOT_URL= "http://localhost:3000/profile/info/";
   list_Url = "http://localhost:3000/profile/list/all/";
@@ -47,6 +47,10 @@ export class ProfilePage implements OnInit {
     popover.onDidDismiss();
 
     return await popover.present();
+  }
+
+  goListDetail(id: string){
+    this.navCtrl.navigateForward('list-in-movies/'+id)
   }
 
   ngOnInit() {

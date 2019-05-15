@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
   { path: 'movie-detail/:id', loadChildren: './movie-detail/movie-detail.module#MovieDetailPageModule' },
   { path: 'about', loadChildren: './about/about.module#AboutPageModule' },
-  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' }
+  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
+  { path: 'list-in-movies/:id', loadChildren: './list-in-movies/list-in-movies.module#ListInMoviesPageModule' }
 ];
 
 @NgModule({

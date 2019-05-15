@@ -27,7 +27,7 @@
   
         <div class="lists">
           <div class="movielist" *ngFor="let list of lists | async">
-            <p style="margin-left:20px;margin-top:-3px;">{{ list.name }}</p>
+            <p style="margin-left:20px;margin-top:-3px;" (click)="goListDetail(list._id)">{{ list.name }}</p>
             <div class="list-group">
               <img src="/assets/imgs/remove-movie.png" height="50" width="50">
             </div>
